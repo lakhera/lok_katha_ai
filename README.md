@@ -85,5 +85,3 @@ MIT License
 
 - Inspired by India's oral storytelling heritage
 - Powered by OpenAI, Coqui, ElevenLabs, LangChain, and Gradio
-
-
