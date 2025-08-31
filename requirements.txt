@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+requests
+reportlab
+nltk
+google-generativeai
+gTTS
+pyttsx3
+moviepy
+Pillow
+imageio-ffmpeg
+numpy

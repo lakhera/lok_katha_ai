@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Environment & secrets
+.env
+*.env
+
+# Logs & outputs
+*.log
+storyteller_log.txt
+*.sqlite3
+*.db
+
+# Fonts & cache
+fonts/
+.nltk_data/
+
+# VS Code / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.venv/
+
+# OS junk
+.DS_Store
+Thumbs.db

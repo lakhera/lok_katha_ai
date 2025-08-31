@@ -1,0 +1,173 @@
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/static/favicon.ico" />
+  <title>Smart Cultural Storyteller</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <!-- Project Header -->
+  <div style="text-align:center; margin:20px 0; padding:20px;
+              background: linear-gradient(135deg, #2b7cff, #00c853);
+              border-radius: 16px; color:#fff; box-shadow:0 4px 20px rgba(0,0,0,.35);">
+    <h1 style="margin:0; font-size:2.2em; font-weight:800; letter-spacing:1px;">
+      Smart Cultural Storyteller
+    </h1>
+    <p style="margin:6px 0 12px; font-size:1.2em; font-style:italic; opacity:0.95;">
+      Reviving heritage with AI
+    </p>
+    <p style="margin:0; font-size:0.95em; font-weight:700; color:#ffe082;">
+      Design &amp; Developed By Amit Lakhera
+    </p>
+  </div>
+
+  <div class="lk-wrap">
+    <div class="lk-card">
+
+      <div class="lk-grid">
+        <div>
+          <label class="lk-label">Story Language</label>
+          <select id="lk-story-lang" class="lk-select">
+            <option>English</option><option>Hindi</option>
+          </select>
+        </div>
+        <div>
+          <label class="lk-label">Genre</label>
+          <select id="lk-genre" class="lk-select">
+            <option>Folk Tale</option><option>Historical Narrative</option>
+          </select>
+        </div>
+        <div>
+          <label class="lk-label">Region</label>
+          <select id="lk-region" class="lk-select">
+            <option>All-India</option>
+            <option>Punjab</option>
+            <option>Tamil Nadu</option>
+            <option>Rajasthan (Thar)</option>
+            <option>Ganga plains (UP/Bihar)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="lk-label">Model</label>
+          <select id="lk-model" class="lk-select">
+            <option value="openrouter/auto">Auto (best available)</option>
+            <option value="anthropic/claude-3.7-sonnet">Claude 3.7 Sonnet</option>
+            <option value="google/gemini-2.0-flash-thinking-exp">Gemini 2.0 Flash Thinking (exp)</option>
+            <option value="openai/gpt-4o-mini">GPT-4o Mini</option>
+          </select>
+        </div>
+        <div>
+          <label class="lk-label">Images</label>
+          <select id="lk-img-count" class="lk-select">
+            <option>2</option><option>1</option><option>3</option><option>4</option>
+          </select>
+        </div>
+        <div>
+          <label class="lk-label">Seed</label>
+          <textarea id="lk-seed" class="lk-textarea" placeholder="Enter your idea (10–300 chars). Example: A lesson about honesty near the Ganga ghats"></textarea>
+        </div>
+      </div>
+
+      <h4>Story</h4>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin:12px 0;">
+        <div class="lk-progress" style="flex:1; margin-right:12px;">
+          <div id="lk-bar" class="lk-bar"></div>
+        </div>
+        <span id="lk-model-badge" class="lk-badge">Model: —</span>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 12px;">
+        <button id="lk-generate" class="lk-btn lk-btn-primary lk-btn-fat">🚀 Generate Story</button>
+        <button id="lk-dl-txt"   class="lk-btn lk-btn-ghost lk-btn-fat">⬇️ Export TXT</button>
+        <button id="lk-dl-pdf"   class="lk-btn lk-btn-ghost lk-btn-fat">📄 Export PDF</button>
+        <button id="lk-reset"    class="lk-btn lk-btn-warn lk-btn-fat">♻️ Reset</button>
+      </div>
+      <div id="lk-story"></div>
+
+      <h4>Translate</h4>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin:12px 0;">
+        <div class="lk-progress" style="flex:1; margin-right:12px;">
+          <div id="lk-tbar" class="lk-bar"></div>
+        </div>
+        <span id="lk-tmodel-badge" class="lk-badge">Model: —</span>
+      </div>
+      <div class="lk-row" style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+        <label class="lk-label" style="margin:0;">Translate language to</label>
+        <select id="lk-lang" class="lk-select" style="width:auto;">
+          <option>Hindi</option><option>English</option>
+        </select>
+        <button id="lk-translate" class="lk-btn lk-btn-accent lk-btn-fat">🌐 Translate Story</button>
+      </div>
+      <div id="lk-translation"></div>
+
+      <h4>Transcript</h4>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin:12px 0;">
+        <div class="lk-progress" style="flex:1; margin-right:12px;">
+          <div id="lk-sbar" class="lk-bar"></div>
+        </div>
+        <span id="lk-smodel-badge" class="lk-badge">Model: —</span>
+      </div>
+      <div id="lk-transcript"></div>
+
+      <h4>Images</h4>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin:12px 0;">
+        <div class="lk-progress" style="flex:1; margin-right:12px;">
+          <div id="lk-ibar" class="lk-bar"></div>
+        </div>
+        <span id="lk-imodel-badge" class="lk-badge">Model: —</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; margin:8px 0 12px;">
+        <label class="lk-label" style="margin:0;">Style</label>
+        <select id="lk-img-style2" class="lk-select" style="width:auto;">
+          <option>watercolor</option>
+          <option>pencil</option>
+          <option>flat-vector</option>
+          <option>anime</option>
+          <option>oil-painting</option>
+          <option>comic</option>
+          <option>clay</option>
+        </select>
+        <button id="lk-images" class="lk-btn lk-btn-accent lk-btn-fat">🖼️ Generate Images</button>
+      </div>
+      <div id="lk-images-grid" class="lk-imggrid"></div>
+
+      <h4>Audio</h4>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin:12px 0;">
+        <div class="lk-progress" style="flex:1; margin-right:12px;">
+          <div id="lk-abar" class="lk-bar"></div>
+        </div>
+        <span id="lk-amodel-badge" class="lk-badge">Model: —</span>
+      </div>
+      <div class="lk-row" style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+        <label class="lk-label" style="margin:0;">Accent</label>
+        <select id="lk-accent" class="lk-select" style="width:auto;">
+          <option>Indian</option><option>British</option>
+        </select>
+        <button id="lk-audio-btn" class="lk-btn lk-btn-accent lk-btn-fat">🔊 Generate Audio</button>
+      </div>
+      <audio id="lk-audio" controls></audio>
+
+      <h4>Video</h4>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin:12px 0;">
+        <div class="lk-progress" style="flex:1; margin-right:12px;">
+          <div id="lk-vbar" class="lk-bar"></div>
+        </div>
+        <span id="lk-vmodel-badge" class="lk-badge">Model: —</span>
+      </div>
+      <div class="lk-row" style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+        <label class="lk-label" style="margin:0;">Accent</label>
+        <select id="lk-vaccent" class="lk-select" style="width:auto;">
+          <option>Indian</option><option>British</option>
+        </select>
+        <button id="lk-video-btn" class="lk-btn lk-btn-accent lk-btn-fat">🎬 Generate Video</button>
+      </div>
+      <video id="lk-video" controls></video>
+
+    </div>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
