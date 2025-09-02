@@ -1,3 +1,6 @@
+# app/services/pdf_export.py
+# Description: This module handles PDF export functionality.
+# Requires: reportlab
 
 import os, urllib.request, datetime
 from reportlab.lib.pagesizes import A4

@@ -1,3 +1,6 @@
+# app/services/text_gen.py
+# Description: This module handles text generation using various APIs.
+# Requires: requests
 
 import os, requests
 from typing import Tuple

@@ -1,16 +1,36 @@
-# LokKatha.ai — Full FastAPI App (with TTS toggle)
+# LokKatha.ai — Smart Cultural Storyteller
 
-- Story, Translate, Transcript, Images, **Audio (TTS)** — each with progress bar + model badge
-- OpenRouter → Gemini fallback (skips 401/402/403/429)
-- HF images (styles)
-- Hindi-safe PDF export
-- TXT export
-- **TTS toggle**: `TTS_PROVIDER=gtts` (online, default) or `offline` (pyttsx3)
-- `.gitignore` ignores `.env`
+Reviving heritage with AI to preserve and share Indian cultural narratives.
 
-## Run
-1. `python -m venv .venv && source .venv/bin/activate`  (Windows: `.venv\Scripts\activate`)
-2. `pip install -r requirements.txt`
-3. Copy `.env.example` → `.env` and set keys (needed for story/translate/images)
-4. `uvicorn app.main:app --reload`
-5. Open http://localhost:8000
+## ✨ Features
+- 📖 **Interactive Story Generation** — Folk tales & historical narratives
+- 🌐 **Multilingual Translation** — English ↔ Hindi and more
+- 🔊 **Audio Narration** — Indian / British accent TTS (gTTS + pyttsx3 fallback)
+- 🖼️ **Visual Storytelling** — AI-generated images (Hugging Face models)
+- 📄 **Export Options** — Hindi-safe PDF/TXT with fonts
+- 🎬 **Video Output** — Slideshow / Shortclip / Full MoviePy video
+- 🎨 **Modern UI** — Progress bars, model badges, colorful buttons
+
+## 🛠️ Tech Stack
+- **Backend:** FastAPI (Python)
+- **Frontend:** HTML/CSS/JS (served via FastAPI StaticFiles)
+- **AI Services:** OpenRouter LLMs, Gemini, Hugging Face image models
+- **TTS:** gTTS (online) with pyttsx3 (offline fallback)
+- **Media Processing:** Pillow, imageio, MoviePy, ffmpeg
+- **Deployment:** Uvicorn
+
+## 🚀 Installation
+```bash
+git clone https://github.com/lakhera/lok_katha_ai.git
+cd lok_katha_ai
+python -m venv .venv
+source .venv/bin/activate   # (or .venv\Scripts\activate on Windows)
+pip install -r requirements.txt
+cp .env.example .env
+./start.sh
+
+Then open http://localhost:8000
+
+Contributors
+
+Amit Lakhera — Design & Development

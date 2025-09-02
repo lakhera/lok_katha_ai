@@ -1,3 +1,6 @@
+# app/services/translate.py
+# Description: This module handles text translation using various APIs.
+# Requires: requests
 
 import os, requests
 from dotenv import load_dotenv

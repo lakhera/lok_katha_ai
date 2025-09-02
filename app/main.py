@@ -1,11 +1,13 @@
 # app/main.py
+# Description: Main entry point for the FastAPI application.
+# Requires: FastAPI, Pydantic, dotenv
+
 import os, io, base64, tempfile, pathlib
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse, FileResponse, JSONResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from dotenv import load_dotenv
-
 from app.utils.log import log_event
 from app.utils.text import tokenize_sentences, bullets
 from app.state import state

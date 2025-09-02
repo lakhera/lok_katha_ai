@@ -1,4 +1,7 @@
-
+# app/services/images.py
+# Description: This module handles image generation using various APIs.
+# Requires: requests
+    
 import os, base64, requests
 from dotenv import load_dotenv
 from app.utils.log import log_event

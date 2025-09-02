@@ -1,3 +1,6 @@
+# app/services/audio.py
+# Description: This module handles text-to-speech synthesis using various APIs.
+# Requires: gTTS, pyttsx3
 
 import io, os, tempfile
 from typing import Tuple

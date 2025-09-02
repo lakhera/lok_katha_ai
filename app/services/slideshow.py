@@ -1,9 +1,8 @@
 # app/services/slideshow.py
-# Lightweight video (slideshow) builder using imageio + ffmpeg + Pillow
-# Produces a low-res MP4 and muxes TTS audio from app.services.audio.synthesize_tts
+# Description: This module handles the creation of slideshows from images and audio.
+# Requires: imageio, Pillow, imageio-ffmpeg
 
 from __future__ import annotations
-
 import os, io, base64, tempfile
 from typing import Tuple, List
 from app.utils.log import log_event
