@@ -1,5 +1,11 @@
 # LokKatha.ai — Smart Cultural Storyteller
 
+## 📚 Quick Links
+- [API Reference](API.md)
+- [Service Module Interfaces](docs/SERVICES.md)
+- [Contribution Guidelines](CONTRIBUTING.md)
+- [AI Agent Instructions](.github/copilot-instructions.md)
+
 Reviving heritage with AI to preserve and share Indian cultural narratives.
 
 ## ✨ Features
@@ -31,6 +37,6 @@ cp .env.example .env
 
 Then open http://localhost:8000
 
-Contributors
-
-Amit Lakhera — Design & Development
+👥 Contributors
+```bash
+* Amit Lakhera — Design & Development
