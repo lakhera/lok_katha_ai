@@ -2,14 +2,19 @@
 # Description: This module handles text translation using various APIs.
 # Requires: requests
 
+# import libraries
 import os, requests
 from dotenv import load_dotenv
 from app.utils.log import log_event
+
 load_dotenv()
+
+# environment variables and configuration
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 GOOGLE_API_KEY     = os.getenv("GOOGLE_API_KEY")
 MODEL_PREFS_OPENROUTER = [m.strip() for m in (os.getenv("MODEL_PREFS_OPENROUTER") or "").split(",") if m.strip()]
 MODEL_NAME_GEMINI  = os.getenv("MODEL_NAME_GEMINI", "gemini-1.5-flash")
+
 try:
     import google.generativeai as genai
     if GOOGLE_API_KEY:
@@ -19,6 +24,8 @@ try:
         _gemini_model = None
 except Exception:
     _gemini_model = None
+
+# translation function
 def translate_text(text: str, target_lang: str, forced_model: str | None = None) -> tuple[str, tuple[str, str]]:
     if not (text or "").strip(): return "", ("fallback","none")
     prompt = f"Translate into {target_lang} for Indian middle-school readers (simple, respectful). Output only the translation.\n\n{text}"

@@ -2,17 +2,23 @@
 # Description: This module handles text generation using various APIs.
 # Requires: requests
 
+# import libraries
 import os, requests
 from typing import Tuple
 from dotenv import load_dotenv
 from app.utils.log import log_event
 from app.utils.text import system_directive
+
 load_dotenv()
+
+# environment variables and configuration
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 MODEL_PREFS_OPENROUTER = [m.strip() for m in (os.getenv("MODEL_PREFS_OPENROUTER") or
                     "openrouter/auto,anthropic/claude-3.7-sonnet,google/gemini-2.0-flash-thinking-exp,openai/gpt-4o-mini").split(",")]
 MODEL_NAME_GEMINI = os.getenv("MODEL_NAME_GEMINI", "gemini-1.5-flash")
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+
+# Initialize Google Gemini if API key is provided
 try:
     import google.generativeai as genai
     if GOOGLE_API_KEY:
@@ -22,6 +28,8 @@ try:
         _gemini_model = None
 except Exception:
     _gemini_model = None
+
+# main function to generate story
 def generate_story(seed: str, lang="English", genre="Folk Tale", region="All-India",
                    forced_model: str | None = None) -> Tuple[str, tuple[str, str]]:
     system = system_directive(genre, region, lang)

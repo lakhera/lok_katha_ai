@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html>
 <head>
@@ -10,22 +9,38 @@
 </head>
 <body>
   <!-- Project Header -->
-  <div style="text-align:center; margin:20px 0; padding:20px;
-              background: linear-gradient(135deg, #2b7cff, #00c853);
-              border-radius: 16px; color:#fff; box-shadow:0 4px 20px rgba(0,0,0,.35);">
-    <h1 style="margin:0; font-size:2.2em; font-weight:800; letter-spacing:1px;">
-       Smart Cultural Storyteller - LokKatha.ai
-    </h1>
-    <p style="margin:6px 0 12px; font-size:1.2em; font-style:italic; opacity:0.95;">
-      Reviving heritage with AI
-      ( <a style="text-decoration:none; color:#2b7cff; font-weight:600;" 
-        href="https://github.com/lakhera/lok_katha_ai" target="_blank"> 🌐 View on GitHub </a>)
-    </p>
-    <p style="margin:0; font-size:0.95em; font-weight:700; color:#ffe082;">
-      Design &amp; Developed By Amit Lakhera 
-      ( Student code : iitrprai_24082167 )
-    </p>
+  <!-- Header -->
+<header class="lk-hero">
+  <div class="lk-hero-inner">
+    <div class="lk-hero-brand">
+      <img
+        src="/static/lokkatha_logo.png"
+        alt="LokKatha.ai logo"
+        class="lk-hero-logo"
+        width="120" height="120"
+      />
+      <div class="lk-hero-titlewrap">
+        <h1 class="lk-hero-title">Smart Cultural Storyteller</h1>
+        <div class="lk-hero-sub">
+          <span class="lk-hero-tagline">Reviving heritage with AI</span>
+          <span class="lk-hero-dot">•</span>
+          <a class="lk-hero-link" href="https://github.com/lakhera/lok_katha_ai" target="_blank">View on GitHub</a>
+        </div>
+        <div class="lk-hero-credit">
+          Design &amp; Developed By <strong>Amit Lakhera</strong>
+          <span class="lk-hero-dot">•</span>
+          <span class="lk-hero-student">Student code: iitrprai_24082167</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- optional right-side badge/chip -->
+    <div class="lk-hero-chip" title="LokKatha.ai">
+      LokKatha.ai
+    </div>
   </div>
+</header>
+  <!-- End Header -->
 
   <div class="lk-wrap">
     <div class="lk-card">
@@ -66,7 +81,10 @@
         <div>
           <label class="lk-label">Images</label>
           <select id="lk-img-count" class="lk-select">
-            <option>2</option><option>1</option><option>3</option><option>4</option>
+            <option>2</option>
+            <option>4</option>
+            <option>6</option>
+            <option>8</option>
           </select>
         </div>
         <div>
@@ -107,7 +125,8 @@
       <div class="lk-row" style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
         <label class="lk-label" style="margin:0;">Translate language to</label>
         <select id="lk-lang" class="lk-select" style="width:auto;">
-          <option>Hindi</option><option>English</option>
+          <option>Hindi</option>
+          <option>English</option>
         </select>
         <button id="lk-translate" class="lk-btn lk-btn-accent lk-btn-fat">🌐 Translate Story</button>
       </div>
@@ -143,7 +162,6 @@
         <button id="lk-images" class="lk-btn lk-btn-accent lk-btn-fat">🖼️ Generate Images</button>
       </div>
       <div id="lk-images-grid" class="lk-imggrid"></div>
-
       <h4>Audio</h4>
       <div style="display:flex; justify-content:space-between; align-items:center; margin:12px 0;">
         <div class="lk-progress" style="flex:1; margin-right:12px;">
@@ -154,12 +172,13 @@
       <div class="lk-row" style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
         <label class="lk-label" style="margin:0;">Accent</label>
         <select id="lk-accent" class="lk-select" style="width:auto;">
-          <option>Indian</option><option>British</option>
+          <option>Indian</option>
+          <option>British</option>
         </select>
         <button id="lk-audio-btn" class="lk-btn lk-btn-accent lk-btn-fat">🔊 Generate Audio</button>
       </div>
       <audio id="lk-audio" controls></audio>
-
+      
       <h4>Video</h4>
       <div style="display:flex; justify-content:space-between; align-items:center; margin:12px 0;">
         <div class="lk-progress" style="flex:1; margin-right:12px;">
@@ -170,12 +189,17 @@
       <div class="lk-row" style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
         <label class="lk-label" style="margin:0;">Accent</label>
         <select id="lk-vaccent" class="lk-select" style="width:auto;">
-          <option>Indian</option><option>British</option>
+          <option>Indian</option>
+          <option>British</option>
+        </select>
+        <label class="lk-label" style="margin:0;">Style</label>
+        <select id="video-style" class="lk-select" style="width:auto;">
+          <option value="slideshow" selected>Slideshow</option>
+          <option value="shortclip">Shortclip</option>
         </select>
         <button id="lk-video-btn" class="lk-btn lk-btn-accent lk-btn-fat">🎬 Generate Video</button>
       </div>
       <video id="lk-video" controls></video>
-
     </div>
   </div>
   <script src="/static/app.js"></script>

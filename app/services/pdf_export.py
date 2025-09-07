@@ -1,8 +1,12 @@
+# app/services/pdf_export.py
+# Description: Generate a PDF document from story text, translation, and images.
+# Requires: reportlab
+
+# import statements
 import os
 import urllib.request
 import datetime
 from typing import Optional, List
-
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import cm
 from reportlab.pdfbase import pdfmetrics
@@ -12,7 +16,6 @@ from reportlab.platypus import (
 )
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib import utils as U
-
 from app.utils.log import log_event
 from app.utils.text import needs_devanagari
 
@@ -21,6 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 FONT_DIR = os.path.join(BASE_DIR, "fonts")
 os.makedirs(FONT_DIR, exist_ok=True)
 
+# Register Devanagari font if needed
 def _register_hindi_font_if_needed() -> Optional[str]:
     fonts = [
         ("Hind", "https://raw.githubusercontent.com/google/fonts/main/ofl/hind/Hind-Regular.ttf"),
@@ -39,6 +43,7 @@ def _register_hindi_font_if_needed() -> Optional[str]:
             log_event("font_dl_err", {"name": name, "err": str(e)})
     return None
 
+# Main function to build the PDF
 def build_pdf(
     story: str,
     translation: Optional[str],

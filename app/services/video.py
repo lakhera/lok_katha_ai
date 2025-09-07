@@ -2,28 +2,34 @@
 # Description: Generate a video with TTS audio and rendered text slide (MoviePy path)
 # Requires: moviepy, Pillow, numpy, imageio-ffmpeg
 
+# import libraries
 from typing import Tuple
 import os, tempfile
 from app.utils.log import log_event
 from app.services.audio import synthesize_tts
 
+# dependency checks
 _MOVIEPY_OK = True; _PIL_OK = True; _NP_OK = True; _FFMPEG_OK = True
 
+# attempt imports
 try:
     import numpy as np
 except Exception as e:
     _NP_OK = False; _NP_ERR = str(e)
 
+# PIL import
 try:
     from PIL import Image, ImageDraw, ImageFont
 except Exception as e:
     _PIL_OK = False; _PIL_ERR = str(e)
 
+# moviepy import
 try:
     from moviepy.editor import AudioFileClip, ImageClip
 except Exception as e:
     _MOVIEPY_OK = False; _MOVIEPY_ERR = str(e)
 
+# ffmpeg import
 try:
     import imageio_ffmpeg
     _ffmpeg_path = imageio_ffmpeg.get_ffmpeg_exe()
@@ -31,7 +37,7 @@ try:
 except Exception as e:
     _FFMPEG_OK = False; _FFMPEG_ERR = str(e)
 
-
+# check all deps
 def _deps_ready():
     if not _NP_OK: return False, f"numpy not available: {_NP_ERR}"
     if not _PIL_OK: return False, f"Pillow not available: {_PIL_ERR}"
@@ -39,7 +45,7 @@ def _deps_ready():
     if not _FFMPEG_OK: return False, f"ffmpeg not available: {globals().get('_FFMPEG_ERR','unknown')}"
     return True, "ok"
 
-
+# missing deps list
 def missing_deps_list():
     missing = []
     if not _NP_OK: missing.append("numpy")
@@ -49,6 +55,7 @@ def missing_deps_list():
     return missing
 
 
+# text rendering helpers
 def _wrap_text(text, draw, font, max_width):
     words = (text or '').split(); lines, cur = [], []
     for w in words:
@@ -60,7 +67,7 @@ def _wrap_text(text, draw, font, max_width):
     if cur: lines.append(' '.join(cur))
     return '\n'.join(lines)
 
-
+# render a slide with centered text
 def _render_slide(text: str, size=(1280, 720)):
     if not _PIL_OK: raise RuntimeError("Pillow not available")
     from PIL import Image, ImageDraw, ImageFont
@@ -84,7 +91,7 @@ def _render_slide(text: str, size=(1280, 720)):
         y += line_h
     return img
 
-
+# synthesize video function
 def synthesize_video(text: str, accent: str) -> Tuple[bytes, tuple[str, str]]:
     text = (text or '').strip()
     if not text:

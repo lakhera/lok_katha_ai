@@ -2,6 +2,7 @@
 # Description: This module handles text-to-speech synthesis using various APIs.
 # Requires: gTTS, pyttsx3
 
+# import libraries
 import io, os, tempfile
 from typing import Tuple
 from dotenv import load_dotenv

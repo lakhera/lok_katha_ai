@@ -3,6 +3,7 @@
 # Description: Holds the application state for the story, translation, images, and backend information.
 # Requires: Pydantic
 
+# class to hold application state
 class AppState:
     story: str = ""
     translation: str = ""

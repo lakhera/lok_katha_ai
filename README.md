@@ -1,21 +1,31 @@
 # LokKatha.ai — Smart Cultural Storyteller
 
+<p align="center">
+  <img src="app/static/lokkatha_logo.png" alt="LokKatha.ai logo" width="140"/><br/>
+  <b>Reviving heritage with AI</b><br/>
+  <i>Preserve and share Indian folk tales, history & culture in engaging formats</i>
+</p>
+
+---
+
 ## 📚 Quick Links
 - [API Reference](API.md)
 - [Service Module Interfaces](docs/SERVICES.md)
 - [Contribution Guidelines](CONTRIBUTING.md)
 - [AI Agent Instructions](.github/copilot-instructions.md)
 
-Reviving heritage with AI to preserve and share Indian cultural narratives.
+---
 
 ## ✨ Features
 - 📖 **Interactive Story Generation** — Folk tales & historical narratives
-- 🌐 **Multilingual Translation** — English ↔ Hindi and more
+- 🌐 **Multilingual Translation** — English ↔ Hindi (extendable to more)
 - 🔊 **Audio Narration** — Indian / British accent TTS (gTTS + pyttsx3 fallback)
-- 🖼️ **Visual Storytelling** — AI-generated images (Hugging Face models)
-- 📄 **Export Options** — Hindi-safe PDF/TXT with fonts
-- 🎬 **Video Output** — Slideshow / Shortclip / Full MoviePy video
-- 🎨 **Modern UI** — Progress bars, model badges, colorful buttons
+- 🖼️ **Visual Storytelling** — AI-generated illustrations (Hugging Face models, style options)
+- 📄 **Export Options** — Hindi-safe PDF/TXT with embedded fonts
+- 🎬 **Video Output** — Slideshow / Shortclip with captions + narration
+- 🎨 **Modern UI** — Polished header, progress bars, model badges, colorful buttons
+
+---
 
 ## 🛠️ Tech Stack
 - **Backend:** FastAPI (Python)
@@ -25,6 +35,8 @@ Reviving heritage with AI to preserve and share Indian cultural narratives.
 - **Media Processing:** Pillow, imageio, MoviePy, ffmpeg
 - **Deployment:** Uvicorn
 
+---
+
 ## 🚀 Installation
 ```bash
 git clone https://github.com/lakhera/lok_katha_ai.git
@@ -33,10 +45,24 @@ python -m venv .venv
 source .venv/bin/activate   # (or .venv\Scripts\activate on Windows)
 pip install -r requirements.txt
 cp .env.example .env
-./start.sh
+```
 
-Then open http://localhost:8000
-
-👥 Contributors
+### Run locally
 ```bash
-* Amit Lakhera — Design & Development
+uvicorn app.main:app --reload
+# or
+./start.sh
+```
+
+Then open [http://localhost:8000](http://localhost:8000)
+
+---
+
+## 👥 Contributors
+- **Amit Lakhera** — Design & Development  
+  *(Student code: iitrprai_24082167)*
+
+---
+
+## 📜 License
+This project is licensed under the [MIT License](LICENSE).
