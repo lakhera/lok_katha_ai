@@ -14,13 +14,16 @@
               background: linear-gradient(135deg, #2b7cff, #00c853);
               border-radius: 16px; color:#fff; box-shadow:0 4px 20px rgba(0,0,0,.35);">
     <h1 style="margin:0; font-size:2.2em; font-weight:800; letter-spacing:1px;">
-      Smart Cultural Storyteller
+       Smart Cultural Storyteller - LokKatha.ai
     </h1>
     <p style="margin:6px 0 12px; font-size:1.2em; font-style:italic; opacity:0.95;">
       Reviving heritage with AI
+      ( <a style="text-decoration:none; color:#2b7cff; font-weight:600;" 
+        href="https://github.com/lakhera/lok_katha_ai" target="_blank"> 🌐 View on GitHub </a>)
     </p>
     <p style="margin:0; font-size:0.95em; font-weight:700; color:#ffe082;">
-      Design &amp; Developed By Amit Lakhera
+      Design &amp; Developed By Amit Lakhera 
+      ( Student code : iitrprai_24082167 )
     </p>
   </div>
 
@@ -67,11 +70,18 @@
           </select>
         </div>
         <div>
-          <label class="lk-label">Seed</label>
-          <textarea id="lk-seed" class="lk-textarea" placeholder="Enter your idea (10–300 chars). Example: A lesson about honesty near the Ganga ghats"></textarea>
-        </div>
+          <label class="lk-label">Mode</label>
+          <select id="lk-mode-count" class="lk-select">
+            <option>Online</option>
+            <option>Offline</option>
+          </select>
+        </div>        
       </div>
-
+      <div style="margin-top: 10px; margin-right:20px;">
+        <label class="lk-label">User Prompt (Seed)</label>
+        <textarea id="lk-seed" class="lk-textarea" placeholder="Enter your idea (10–300 chars). Example: A lesson about honesty near the Ganga ghats"></textarea>
+      </div>
+      
       <h4>Story</h4>
       <div style="display:flex; justify-content:space-between; align-items:center; margin:12px 0;">
         <div class="lk-progress" style="flex:1; margin-right:12px;">

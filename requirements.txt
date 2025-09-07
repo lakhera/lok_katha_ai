@@ -11,3 +11,5 @@ moviepy
 Pillow
 imageio-ffmpeg
 numpy
+httpx 
+tenacity
